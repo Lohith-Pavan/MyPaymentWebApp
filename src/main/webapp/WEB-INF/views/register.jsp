@@ -75,7 +75,7 @@
 
     <div class="container">
         <h2>Register</h2>
-        <form action="RegisterServlet" method="POST">
+        <form action="/login" method="POST">
             <div class="input-group">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" required>

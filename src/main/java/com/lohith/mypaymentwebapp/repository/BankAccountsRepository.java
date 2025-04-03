@@ -3,9 +3,9 @@ package com.lohith.mypaymentwebapp.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.lohith.mypaymentwebapp.entity.UserAccountDetailsEntity;
+import com.lohith.mypaymentwebapp.entity.BankAccountsEntity;
 
 @Repository
-public interface UserAccountDetailsRepository extends JpaRepository <UserAccountDetailsEntity,Long>{
-	
+public interface BankAccountsRepository extends JpaRepository<BankAccountsEntity,Long>{
+    
 }
