@@ -43,7 +43,7 @@
                 <p><strong>Phone Number:</strong><%=user.getPhoneNumber() %></p>
                 <p><strong>Email:</strong><%=user.getEmail() %></p>
                 <p><strong>Address:</strong><%=user.getAddress() %></p>
-                <a href="editprofilepage" class="btn btn-success btn-sm btn-custom">Edit</a>
+                <a href="/editprofilepage" class="btn btn-success btn-sm btn-custom">Edit</a>
             </div>
             <div class="col-md-6 card-custom">
                 <h5>Primary Bank Account</h5>

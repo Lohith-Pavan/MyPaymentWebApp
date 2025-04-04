@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.lohith.mypaymentwebapp.entity.UserEntity" %>
-<%
-    UserEntity user = (UserEntity) request.getAttribute("existingUser");
-%>
+<%@ page import="com.lohith.mypaymentwebapp.model.UserRegistrationModel" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,35 +41,35 @@
     </style>
 </head>
 <body>
-
+<% UserRegistrationModel user = (UserRegistrationModel)request.getAttribute("userRegModel"); 
+if(user!= null){%>
 <div class="form-container">
     <h2>Edit Profile</h2>
-    <form action="/updateUser" method="post">
-        <input type="hidden" name="userId" value="<%= user.getUserId() %>">
-
+    <form action="/updateUser" method="POST">
         <label>First Name</label>
-        <input type="text" name="firstName" value="<%= user.getFirstName() %>" required>
+        <input type="text" name="firstName" value="<%=user.getFirstName()%>" required>
 
         <label>Last Name</label>
-        <input type="text" name="lastName" value="<%= user.getLastName() %>" required>
+        <input type="text" name="lastName" value="<%=user.getLastName()%>" required>
 
         <label>Phone Number</label>
-        <input type="tel" name="phoneNumber" value="<%= user.getPhoneNumber() %>" required>
+        <input type="tel" name="phoneNumber" value="<%=user.getPhoneNumber()%>" required>
 
         <label>Email</label>
-        <input type="email" name="email" value="<%= user.getEmail() %>" required>
+        <input type="email" name="email" value="<%=user.getEmail()%>" required>
 
         <label>Address</label>
-        <input type="text" name="address" value="<%= user.getAddress() %>" required>
+        <input type="text" name="address" value="<%=user.getAddress()%>" required>
 
         <label>User Name</label>
-        <input type="text" name="userName" value="<%= user.getUserName() %>" required>
+        <input type="text" name="userName" value="<%=user.getUserName()%>" required>
 
         <label>Password</label>
-        <input type="password" name="password" value="<%= user.getPassword() %>" required>
+        <input type="password" name="password" value="<%=user.getPassword()%>" required>
 
         <input type="submit" value="Update">
     </form>
+    <%} %>
 </div>
 
 </body>
