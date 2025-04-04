@@ -18,4 +18,7 @@ public class UserService {
 	public UserEntity getUserByPhoneNumber(String phoneNumber){
 		return userRepo.findByPhoneNumber(phoneNumber);
 	}
+	public UserEntity saveUser(UserEntity user) {
+		return userRepo.save(user);
+	}
 }

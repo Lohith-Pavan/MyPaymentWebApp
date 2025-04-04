@@ -17,7 +17,7 @@ if (userList != null && !userList.isEmpty()) {
 <h1>First Name: <%= user.getLastName() %></h1> 
 <h1>Last Name: <%= user.getUserName() %></h1> 
 <h1>Email: <%= user.getEmail() %></h1> 
-<h1>Address: <%= user.getAddress() %></h1> 
+<h1>Adress: <%= user.getAddress() %></h1> 
 
 <% 
 } else {

@@ -28,10 +28,6 @@ public class UserEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private long userId;
-	@Column(name="user_name")
-    private String userName;
-	@Column(name="password")
-    private String password;
 	@Column(name="first_name")
     private String firstName;
 	@Column(name="last_name")
@@ -42,11 +38,27 @@ public class UserEntity {
     private String email;
 	@Column(name="address")
     private String address;
+	@Column(name="user_name")
+    private String userName;
+	@Column(name="password")
+    private String password;
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	private UserAccountDetailsEntity userAccDetails;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<TransactionEntity> transactions;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<BankAccountsEntity> bankAccounts;
-	
+	@Override
+	public String toString() {
+	    return "UserEntity{" +
+	            "firstName='" + firstName + '\'' +
+	            ", lastName='" + lastName + '\'' +
+	            ", phoneNumber='" + phoneNumber + '\'' +
+	            ", email='" + email + '\'' +
+	            ", address='" + address + '\'' +
+	            ", userName='" + userName + '\'' +
+	            ", password='" + password + '\'' +
+	            '}';
+	}
+
 }
