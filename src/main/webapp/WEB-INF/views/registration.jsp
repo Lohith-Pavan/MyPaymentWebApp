@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %><%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +75,7 @@
 
     <div class="container">
         <h2>Register</h2>
-        <form:form action="${pageContext.request.contextPath}/register" method="POST" modelAttribute="user">
+        <form action="/register" method="POST">
             <div class="input-group">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" required>
@@ -106,7 +105,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn">Register</button>
-         </form:form>
+         </form>
         <div class="login-link">
             Already have an account? <a href="login.jsp">Login here</a>
         </div>

@@ -21,4 +21,7 @@ public class UserService {
 	public UserEntity saveUser(UserEntity user) {
 		return userRepo.save(user);
 	}
+	public UserEntity authenticateUser(String userName,String password) {
+		return userRepo.findByUserNameAndPassword(userName, password);
+	}
 }

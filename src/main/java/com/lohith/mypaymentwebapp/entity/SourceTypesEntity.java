@@ -11,11 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+
 @Entity
 @Table(name="source_types")
 public class SourceTypesEntity {
@@ -27,4 +23,28 @@ public class SourceTypesEntity {
 	private String sourceTypeCode;
 	@Column(name="source_type_name")
 	private String sourceTypeName;
+	public long getSourceId() {
+		return sourceId;
+	}
+	public void setSourceId(long sourceId) {
+		this.sourceId = sourceId;
+	}
+	public String getSourceTypeCode() {
+		return sourceTypeCode;
+	}
+	public void setSourceTypeCode(String sourceTypeCode) {
+		this.sourceTypeCode = sourceTypeCode;
+	}
+	public String getSourceTypeName() {
+		return sourceTypeName;
+	}
+	public void setSourceTypeName(String sourceTypeName) {
+		this.sourceTypeName = sourceTypeName;
+	}
+	@Override
+	public String toString() {
+		return "SourceTypesEntity [sourceId=" + sourceId + ", sourceTypeCode=" + sourceTypeCode + ", sourceTypeName="
+				+ sourceTypeName + "]";
+	}
+	
 }

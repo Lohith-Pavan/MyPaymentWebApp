@@ -17,8 +17,13 @@
 </head>
 <body>
     <div class="container">
-        <form action="LoginServlet" method="post" class="centered-form bg-white p-4">
+        <form action="/login" method="post" class="centered-form bg-white p-4">
+        	<% String user = (String)request.getAttribute("error"); 
+        	if(user!=null){ %>
+            <h2 class="text-center">Login Unsuccessful</h2>
+            <% } else{ %>
             <h2 class="text-center">Login</h2>
+            <%} %>
             <div class="mb-3">
                 <label class="form-label">Username</label>
                 <input type="text" name="userName" class="form-control" placeholder="Enter your username" required>

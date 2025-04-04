@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="com.payment.model.UserDto" %>
+<%@ page import="com.lohith.mypaymentwebapp.model.UserProfileModel" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +33,7 @@
             <h2 class="text-primary">Payments Dashboard</h2>
             <a href="LogoutServlet" class="btn btn-danger btn-custom">Logout</a>
         </div>
-        <%UserDto user = (UserDto)session.getAttribute("user");
+        <%UserProfileModel user = (UserProfileModel)request.getAttribute("user");
         %>
         <div class="row">
         	<div class="col-md-4 card-custom border p-3">
@@ -43,7 +43,7 @@
                 <p><strong>Phone Number:</strong><%=user.getPhoneNumber() %></p>
                 <p><strong>Email:</strong><%=user.getEmail() %></p>
                 <p><strong>Address:</strong><%=user.getAddress() %></p>
-                <a href="editBankAcct.jsp" class="btn btn-success btn-sm btn-custom">Edit</a>
+                <a href="editprofilepage" class="btn btn-success btn-sm btn-custom">Edit</a>
             </div>
             <div class="col-md-6 card-custom">
                 <h5>Primary Bank Account</h5>

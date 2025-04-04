@@ -14,11 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+
 @Entity
 @Table(name = "user_account_details")
 public class UserAccountDetailsEntity {
@@ -36,5 +32,47 @@ public class UserAccountDetailsEntity {
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private UserEntity user;
-
+	public long getUserAccountId() {
+		return userAccountId;
+	}
+	public void setUserAccountId(long userAccountId) {
+		this.userAccountId = userAccountId;
+	}
+	public LocalDate getAccountOpenDate() {
+		return accountOpenDate;
+	}
+	public void setAccountOpenDate(LocalDate accountOpenDate) {
+		this.accountOpenDate = accountOpenDate;
+	}
+	public double getCurrentWalletBalance() {
+		return currentWalletBalance;
+	}
+	public void setCurrentWalletBalance(double currentWalletBalance) {
+		this.currentWalletBalance = currentWalletBalance;
+	}
+	public int getLinkedBankAccountsCount() {
+		return linkedBankAccountsCount;
+	}
+	public void setLinkedBankAccountsCount(int linkedBankAccountsCount) {
+		this.linkedBankAccountsCount = linkedBankAccountsCount;
+	}
+	public int getWalletPin() {
+		return walletPin;
+	}
+	public void setWalletPin(int walletPin) {
+		this.walletPin = walletPin;
+	}
+	public UserEntity getUser() {
+		return user;
+	}
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+	@Override
+	public String toString() {
+		return "UserAccountDetailsEntity [userAccountId=" + userAccountId + ", accountOpenDate=" + accountOpenDate
+				+ ", currentWalletBalance=" + currentWalletBalance + ", linkedBankAccountsCount="
+				+ linkedBankAccountsCount + ", walletPin=" + walletPin + ", user=" + user + "]";
+	}
+	
 }
