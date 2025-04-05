@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Entity
 @Table(name = "user_account_details")
 public class UserAccountDetailsEntity {
@@ -74,5 +73,4 @@ public class UserAccountDetailsEntity {
 				+ ", currentWalletBalance=" + currentWalletBalance + ", linkedBankAccountsCount="
 				+ linkedBankAccountsCount + ", walletPin=" + walletPin + ", user=" + user + "]";
 	}
-	
 }

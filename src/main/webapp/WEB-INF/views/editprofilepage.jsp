@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-<% UserRegistrationModel user = (UserRegistrationModel)request.getAttribute("userRegModel"); 
+<% UserRegistrationModel user = (UserRegistrationModel)request.getAttribute("userEditProfile");
 if(user!= null){%>
 <div class="form-container">
     <h2>Edit Profile</h2>

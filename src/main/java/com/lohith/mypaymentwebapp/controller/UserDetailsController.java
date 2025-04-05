@@ -1,22 +1,39 @@
 package com.lohith.mypaymentwebapp.controller;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lohith.mypaymentwebapp.entity.UserEntity;
 import com.lohith.mypaymentwebapp.model.UserRegistrationModel;
+import com.lohith.mypaymentwebapp.service.UserService;
 
-
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/")
 public class UserDetailsController {
-     @GetMapping("/editprofilepage")
-     public String editprofile(Model model) {
-    	 UserRegistrationModel userRegModel = new UserRegistrationModel();
-    	 model.addAttribute("userRegModel", userRegModel);
-    	 return "editprofilepage";
-     }
+	@Autowired
+	public UserService userService;
+    @GetMapping("/editprofilepage")
+    public String editprofile(HttpSession session,Model model) {
+    	Long userId = (Long)session.getAttribute("userId");
+    	Optional<UserEntity> user = userService.getUserById(userId);
+    	UserEntity existingUser = user.orElse(null);
+    	UserRegistrationModel userEditProfile = new UserRegistrationModel();
+    	userEditProfile.setFirstName(existingUser.getFirstName());
+    	userEditProfile.setLastName(existingUser.getLastName());
+    	userEditProfile.setPhoneNumber(existingUser.getPhoneNumber());
+    	userEditProfile.setEmail(existingUser.getEmail());
+    	userEditProfile.setAddress(existingUser.getAddress());
+    	userEditProfile.setUserName(existingUser.getUserName());
+    	userEditProfile.setPassword(existingUser.getPassword());
+    	model.addAttribute("userEditProfile", userEditProfile);
+    return "editprofilepage";
+    }
 }

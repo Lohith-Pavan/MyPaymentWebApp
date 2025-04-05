@@ -50,5 +50,11 @@ public class UserRegistrationModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
+	public String toString() {
+		return "UserRegistrationModel [firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
+				+ phoneNumber + ", email=" + email + ", address=" + address + ", userName=" + userName + ", password="
+				+ password + "]";
+	}
 	
 }

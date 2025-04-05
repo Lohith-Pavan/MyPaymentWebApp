@@ -6,8 +6,6 @@ public class UserProfileModel {
 	private String phoneNumber;
 	private String email;
 	private String address;
-	private String userName;
-	private String password;
 	public String getFirstName() {
 		return firstName;
 	}
@@ -37,18 +35,6 @@ public class UserProfileModel {
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	
 }

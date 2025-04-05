@@ -1,6 +1,7 @@
 package com.lohith.mypaymentwebapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,10 @@ public class UserService {
 	public UserEntity saveUser(UserEntity user) {
 		return userRepo.save(user);
 	}
-	public UserEntity authenticateUser(String userName,String password) {
+	public Optional<UserEntity> authenticateUser(String userName,String password) {
 		return userRepo.findByUserNameAndPassword(userName, password);
+	}
+	public Optional<UserEntity> getUserById(Long userId){
+		return userRepo.findById(userId);
 	}
 }

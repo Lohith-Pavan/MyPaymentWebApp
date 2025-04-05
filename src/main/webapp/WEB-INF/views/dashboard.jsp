@@ -33,7 +33,8 @@
             <h2 class="text-primary">Payments Dashboard</h2>
             <a href="LogoutServlet" class="btn btn-danger btn-custom">Logout</a>
         </div>
-        <%UserProfileModel user = (UserProfileModel)request.getAttribute("user");
+        <%
+        UserProfileModel user = (UserProfileModel)request.getAttribute("userProfile");
         %>
         <div class="row">
         	<div class="col-md-4 card-custom border p-3">
