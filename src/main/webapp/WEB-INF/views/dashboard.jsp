@@ -72,18 +72,32 @@
     </div>
 
     <!-- Profile Section -->
-    <div class="row section">
-        <div class="col-12">
-            <h4>👤 Profile Information</h4>
-            <p><strong>First Name:</strong> <%=user.getFirstName()%></p>
-            <p><strong>Last Name:</strong> <%=user.getLastName()%></p>
-            <p><strong>Phone Number:</strong> <%=user.getPhoneNumber()%></p>
-            <p><strong>Email:</strong> <%=user.getEmail()%></p>
-            <p><strong>Address:</strong> <%=user.getAddress()%></p>
-        </div>
-    </div>
+		<div class="row section">
+			<div class="col-12 d-flex justify-content-between align-items-center">
+				<h4>👤 Profile Information</h4>
+				<a href="/editprofilepage" class="btn btn-sm btn-outline-primary">✏️
+					Edit</a>
+			</div>
+			<div class="col-12 mt-2">
+				<p>
+					<strong>First Name:</strong>
+					<%=user.getFirstName()%></p>
+				<p>
+					<strong>Last Name:</strong>
+					<%=user.getLastName()%></p>
+				<p>
+					<strong>Phone Number:</strong>
+					<%=user.getPhoneNumber()%></p>
+				<p>
+					<strong>Email:</strong>
+					<%=user.getEmail()%></p>
+				<p>
+					<strong>Address:</strong>
+					<%=user.getAddress()%></p>
+			</div>
+		</div>
 
-    <!-- Primary Bank Account -->
+		<!-- Primary Bank Account -->
     <div class="row section">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-3">
