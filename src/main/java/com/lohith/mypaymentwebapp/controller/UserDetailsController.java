@@ -44,6 +44,6 @@ public class UserDetailsController {
     		return "redirect:/login";
     	}
     	userService.updateUserProfile(userId, userRegModel);
-    	return "redirect:/dashboard";
+    	return "dashboard";
     }
 }

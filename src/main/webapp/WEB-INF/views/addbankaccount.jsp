@@ -56,27 +56,27 @@
         <form action="/addbankaccount" method="post">
             <div class="mb-3">
                 <label for="bankName" class="form-label">Bank Name:</label>
-                <input type="text" class="form-control" id="bankName" name="bankName" required>
+                <input type="text" class="form-control" id="bankName" name="userAddBankModel.bankName" required>
             </div>
             <div class="mb-3">
                 <label for="accountNumber" class="form-label">Account Number:</label>
-                <input type="text" class="form-control" id="accountNumber" name="accountNumber" required>
-            </div>
-            <div class="mb-3">
-                <label for="accountType" class="form-label">Account Type:</label>
-                <input type="text" class="form-control" id="accountType" name="accountType" required>
+                <input type="text" class="form-control" id="accountNumber" name="userAddBankModel.accountNumber" required>
             </div>
             <div class="mb-3">
                 <label for="ifscCode" class="form-label">IFSC Code:</label>
-                <input type="text" class="form-control" id="ifscCode" name="ifscCode" required>
+                <input type="text" class="form-control" id="ifscCode" name="userAddBankModel.ifscCode" required>
             </div>
             <div class="mb-3">
                 <label for="balance" class="form-label">Current Balance:</label>
-                <input type="number" class="form-control" id="balance" name="balance" required>
+                <input type="number" class="form-control" id="balance" name="userAddBankModel.balance" required>
             </div>
             <div class="mb-3">
                 <label for="pin" class="form-label">PIN:</label>
-                <input type="password" class="form-control" id="pin" name="pin" required>
+                <input type="password" class="form-control" id="pin" name="userAddBankModel.pin" required>
+            </div>
+            <div class="mb-3">
+                <label for="bankBranch" class="form-label">Branch:</label>
+                <input type="text" class="form-control" id="bankBranch" name="userAddBankModel.bankBranch" required>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-custom">Add Account</button>

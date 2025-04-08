@@ -19,8 +19,7 @@ public class UserRegistrationController {
 	@Autowired
 	public UserService userService;
     @GetMapping("/register")
-    public String showRegisterForm(Model model) {
-    	model.addAttribute("user",new UserEntity());
+    public String showRegisterForm() {
     	return "registration";
     }
     @PostMapping("/register")

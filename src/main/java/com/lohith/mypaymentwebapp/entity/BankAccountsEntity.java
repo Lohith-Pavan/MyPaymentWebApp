@@ -21,16 +21,18 @@ public class BankAccountsEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="bank_account_id")
     private long bankAccountId;
+	@Column(name="bank_name")
+	private String bankName;
 	@Column(name="account_number")
 	private long AccountNumber;
     @Column(name="ifsc_code")
 	private String ifscCode;
-    @Column(name="bank_name")
-	private String bankName;
+    @Column(name="current_balance")
+    private double currentBalance;
+    @Column(name="pin")
+    private int pin;
     @Column(name="bank_branch")
 	private String bankBranch;
-    @Column(name="bank_location")
-	private String bankLocation;
     @Column(name="is_active")
 	private String isActive;
     @ManyToOne
@@ -41,6 +43,12 @@ public class BankAccountsEntity {
 	}
 	public void setBankAccountId(long bankAccountId) {
 		this.bankAccountId = bankAccountId;
+	}
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
 	}
 	public long getAccountNumber() {
 		return AccountNumber;
@@ -54,23 +62,23 @@ public class BankAccountsEntity {
 	public void setIfscCode(String ifscCode) {
 		this.ifscCode = ifscCode;
 	}
-	public String getBankName() {
-		return bankName;
+	public double getCurrentBalance() {
+		return currentBalance;
 	}
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
+	public void setCurrentBalance(double currentBalance) {
+		this.currentBalance = currentBalance;
+	}
+	public int getPin() {
+		return pin;
+	}
+	public void setPin(int pin) {
+		this.pin = pin;
 	}
 	public String getBankBranch() {
 		return bankBranch;
 	}
 	public void setBankBranch(String bankBranch) {
 		this.bankBranch = bankBranch;
-	}
-	public String getBankLocation() {
-		return bankLocation;
-	}
-	public void setBankLocation(String bankLocation) {
-		this.bankLocation = bankLocation;
 	}
 	public String getIsActive() {
 		return isActive;
@@ -86,9 +94,10 @@ public class BankAccountsEntity {
 	}
 	@Override
 	public String toString() {
-		return "BankAccountsEntity [bankAccountId=" + bankAccountId + ", AccountNumber=" + AccountNumber + ", ifscCode="
-				+ ifscCode + ", bankName=" + bankName + ", bankBranch=" + bankBranch + ", bankLocation=" + bankLocation
-				+ ", isActive=" + isActive + ", user=" + user + "]";
+		return "BankAccountsEntity [bankAccountId=" + bankAccountId + ", bankName=" + bankName + ", AccountNumber="
+				+ AccountNumber + ", ifscCode=" + ifscCode + ", currentBalance=" + currentBalance + ", pin=" + pin
+				+ ", bankBranch=" + bankBranch + ", isActive=" + isActive + ", user=" + user + "]";
 	}
-    
+	
+	   
 }
