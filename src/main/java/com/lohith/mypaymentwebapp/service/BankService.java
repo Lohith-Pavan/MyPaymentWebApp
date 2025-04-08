@@ -9,10 +9,11 @@ import com.lohith.mypaymentwebapp.entity.UserAccountDetailsEntity;
 import com.lohith.mypaymentwebapp.repository.UserAccountDetailsRepository;
 
 @Service
-public class UserAccountDetailsService {
-	@Autowired
-	public UserAccountDetailsRepository userAccountDetailsRepository;
-	public List<UserAccountDetailsEntity> getAllUserAccountDetails(){
-		return userAccountDetailsRepository.findAll();
-	}
+public class BankService {
+//	@Autowired
+//	public UserAccountDetailsRepository userAccountDetailsRepository;
+//	public List<UserAccountDetailsEntity> getAllUserAccountDetails(){
+//		return userAccountDetailsRepository.findAll();
+//	}
+	
 }

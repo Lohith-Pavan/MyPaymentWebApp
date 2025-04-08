@@ -20,6 +20,9 @@ public class UserDashboardController {
 	@GetMapping("/dashboard")
 	public String loadprofilepage(HttpSession session,Model model) {
 		Long userId = (Long)session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/login";
+		}
 		Optional<UserEntity> user = userService.getUserById(userId);
 		UserEntity existedUser = user.orElse(null);
 		UserProfileModel userProfile = new UserProfileModel();
@@ -31,4 +34,10 @@ public class UserDashboardController {
 		model.addAttribute("userProfile", userProfile);
 		return "dashboard";
 	}
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
+	}
+	
 }

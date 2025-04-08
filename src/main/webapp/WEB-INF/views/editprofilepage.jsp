@@ -45,7 +45,7 @@
 if(user!= null){%>
 <div class="form-container">
     <h2>Edit Profile</h2>
-    <form action="/updateUser" method="POST">
+    <form action="/editprofilepage" method="POST">
         <label>First Name</label>
         <input type="text" name="firstName" value="<%=user.getFirstName()%>" required>
 
@@ -70,6 +70,7 @@ if(user!= null){%>
         <input type="submit" value="Update">
     </form>
     <%} %>
+    
 </div>
 
 </body>
