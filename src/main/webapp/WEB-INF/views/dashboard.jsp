@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.lohith.mypaymentwebapp.model.UserDashboardModel" %>
+<%@ page import="com.lohith.mypaymentwebapp.model.UserViewBankModel" %>
 <%@ page import="com.lohith.mypaymentwebapp.model.UserProfileModel" %>
-<%
-        UserProfileModel user = (UserProfileModel)request.getAttribute("userProfile");
-        %>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,21 +80,27 @@
 					Edit</a>
 			</div>
 			<div class="col-12 mt-2">
+			<% 
+        UserDashboardModel userDashboardModel = (UserDashboardModel)request.getAttribute("userDashboardModel");
+		if(userDashboardModel!=null){
+			UserProfileModel userProfile = userDashboardModel.getUserProfileModel();
+			List<UserViewBankModel> banksList = userDashboardModel.getUserBanksListModel();
+        %>
 				<p>
 					<strong>First Name:</strong>
-					<%=user.getFirstName()%></p>
+					<%=(userProfile!=null?userProfile.getFirstName():"N/A")%></p>
 				<p>
 					<strong>Last Name:</strong>
-					<%=user.getLastName()%></p>
+					<%=(userProfile!=null?userProfile.getLastName():"N/A")%></p>
 				<p>
 					<strong>Phone Number:</strong>
-					<%=user.getPhoneNumber()%></p>
+					<%=(userProfile!=null?userProfile.getPhoneNumber():"N/A")%></p>
 				<p>
 					<strong>Email:</strong>
-					<%=user.getEmail()%></p>
+					<%=(userProfile!=null?userProfile.getEmail():"N/A")%></p>
 				<p>
 					<strong>Address:</strong>
-					<%=user.getAddress()%></p>
+					<%=(userProfile!=null?userProfile.getAddress():"N/A")%></p>
 			</div>
 		</div>
 
@@ -106,14 +113,18 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <p><strong>Bank Name:</strong> XYZ Bank</p>
-                    <p><strong>Account No:</strong> 1234</p>
-                    <p><strong>Balance:</strong> ₹25,000</p>
+                <%if(banksList!=null && banksList.size()>0){ 
+                      UserViewBankModel selectedBank = banksList.get(0);
+                %>
+                    <p><strong>Bank Name:</strong> <%=(selectedBank!=null?selectedBank.getBankName():"N/A")%></p>
+                    <p><strong>Account No:</strong><%=(selectedBank!=null?selectedBank.getAccountNumber():"N/A")%></p>
+                    <p><strong>Balance:</strong> ₹<%=(selectedBank!=null?selectedBank.getCurrentBalance():"N/A")%></p>
                 </div>
                 <div class="col-md-6">
-                    <p><strong>IFSC:</strong> XYZ000123</p>
-                    <p><strong>Branch:</strong> Main Branch</p>
+                    <p><strong>IFSC:</strong> <%=(selectedBank!=null?selectedBank.getIfscCode():"N/A")%></p>
+                    <p><strong>Branch:</strong> <%=(selectedBank!=null?selectedBank.getBankBranch():"N/A")%></p>
                 </div>
+                <% }} %>
             </div>
         </div>
     </div>

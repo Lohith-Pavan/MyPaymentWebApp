@@ -96,7 +96,7 @@ public class BankAccountsEntity {
 	public String toString() {
 		return "BankAccountsEntity [bankAccountId=" + bankAccountId + ", bankName=" + bankName + ", AccountNumber="
 				+ AccountNumber + ", ifscCode=" + ifscCode + ", currentBalance=" + currentBalance + ", pin=" + pin
-				+ ", bankBranch=" + bankBranch + ", accountStatus=" + accountStatus + ", user=" + user + "]";
+				+ ", bankBranch=" + bankBranch + ", accountStatus=" + accountStatus + "]";
 	}
 	
 	   

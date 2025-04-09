@@ -1,20 +1,22 @@
 package com.lohith.mypaymentwebapp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDashboardModel {
       private UserProfileModel userProfileModel;
-      private List<UserViewBankModel> userViewBankModel;
+      private List<UserViewBankModel> userBanksListModel;
 	public UserProfileModel getUserProfileModel() {
 		return userProfileModel;
 	}
 	public void setUserProfileModel(UserProfileModel userProfileModel) {
 		this.userProfileModel = userProfileModel;
 	}
-	public List<UserViewBankModel> getUserViewBankModel() {
-		return userViewBankModel;
+	public List<UserViewBankModel> getUserBanksListModel() {
+		return userBanksListModel;
 	}
-	public void setUserViewBankModel(List<UserViewBankModel> userViewBankModel) {
-		this.userViewBankModel = userViewBankModel;
+	public void setUserBanksListModel(List<UserViewBankModel> userBanksListModel) {
+		this.userBanksListModel = userBanksListModel;
 	}
+	
 }
