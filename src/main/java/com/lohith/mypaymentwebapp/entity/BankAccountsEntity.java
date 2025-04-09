@@ -33,8 +33,8 @@ public class BankAccountsEntity {
     private int pin;
     @Column(name="bank_branch")
 	private String bankBranch;
-    @Column(name="is_active")
-	private String isActive;
+    @Column(name="account_status")
+	private String accountStatus;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
@@ -80,11 +80,11 @@ public class BankAccountsEntity {
 	public void setBankBranch(String bankBranch) {
 		this.bankBranch = bankBranch;
 	}
-	public String getIsActive() {
-		return isActive;
+	public String getAccountStatus() {
+		return accountStatus;
 	}
-	public void setIsActive(String isActive) {
-		this.isActive = isActive;
+	public void setAccountStatus(String accountStatus) {
+		this.accountStatus = accountStatus;
 	}
 	public UserEntity getUser() {
 		return user;
@@ -96,7 +96,7 @@ public class BankAccountsEntity {
 	public String toString() {
 		return "BankAccountsEntity [bankAccountId=" + bankAccountId + ", bankName=" + bankName + ", AccountNumber="
 				+ AccountNumber + ", ifscCode=" + ifscCode + ", currentBalance=" + currentBalance + ", pin=" + pin
-				+ ", bankBranch=" + bankBranch + ", isActive=" + isActive + ", user=" + user + "]";
+				+ ", bankBranch=" + bankBranch + ", accountStatus=" + accountStatus + ", user=" + user + "]";
 	}
 	
 	   

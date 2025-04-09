@@ -23,8 +23,7 @@ public class UserLoginController {
 	@Autowired
 	public UserService userService;
 	@GetMapping("/login")
-	public String showloginpage(Model model) {
-		model.addAttribute("user",new UserEntity());
+	public String showloginpage() {
 		return "login";
 	}
 	@PostMapping("/login")

@@ -23,7 +23,6 @@ import jakarta.servlet.http.HttpSession;
 public class AddBankController {
 	@Autowired
 	public UserService userService;
-	public BankService bankService;
 	@GetMapping("/addbankaccount")
 	public String showAddBankAccountPage() {
 		return "addbankaccount";
@@ -31,23 +30,26 @@ public class AddBankController {
 	@PostMapping("/addbankaccount")
 	public String addBankAccount(@ModelAttribute UserBankModel bankDetails,HttpSession session,Model model) {
 		// Get the logged-in user (assuming you store it in session)
-	    Long userId = (Long) session.getAttribute("userId"); 
-	    UserEntity user = userService.getUserById(userId).orElse(null);
-
-	    if (user != null) {
-	        UserAddBankModel form = bankDetails.getUserAddBankModel();
-
-	        BankAccountsEntity account = new BankAccountsEntity();
-	        account.setBankName(form.getBankName());
-	        account.setAccountNumber(form.getAccountNumber());
-	        account.setIfscCode(form.getIfscCode());
-	        account.setCurrentBalance(form.getCurrentBalance());
-	        account.setPin(form.getPin());
-	        account.setBankBranch(form.getBankBranch());
-	        account.setUser(user); // important!
-
-	        bankService.saveUser(account);
+	    Long userId = (Long)session.getAttribute("userId"); 
+	    if(userId == null) {
+	    	return "redirect:/login";
 	    }
-	    return "redirect:/dashboard"; // or wherever you want
+	    Optional<UserEntity> user = userService.getUserById(userId);
+	    if(user.isPresent()) {
+	    	UserEntity existingUser = user.get();
+	    	UserAddBankModel userAddBankModel = bankDetails.getUserAddBankModel();
+	    	BankAccountsEntity bankEntity = new BankAccountsEntity();
+	    	bankEntity.setBankName(userAddBankModel.getBankName());
+	    	bankEntity.setAccountNumber(userAddBankModel.getAccountNumber());
+	    	bankEntity.setIfscCode(userAddBankModel.getIfscCode());
+	    	bankEntity.setCurrentBalance(userAddBankModel.getCurrentBalance());
+	    	bankEntity.setPin(userAddBankModel.getPin());
+	    	bankEntity.setBankBranch(userAddBankModel.getBankBranch());
+	    	bankEntity.setAccountStatus(userAddBankModel.getAccountStatus());
+	    	bankEntity.setUser(existingUser);
+	    	existingUser.getBankAccounts().add(bankEntity);
+	    	userService.saveUser(existingUser);
+	    }
+	   	return "redirect:/dashboard";
 	}
 }

@@ -3,19 +3,13 @@ package com.lohith.mypaymentwebapp.model;
 import jakarta.persistence.Column;
 
 public class UserAddBankModel {
-	private long bankAccountId;
 	private String bankName;   
 	private long AccountNumber;
 	private String ifscCode;
 	private double currentBalance;
 	private int pin;
 	private String bankBranch;
-	public long getBankAccountId() {
-		return bankAccountId;
-	}
-	public void setBankAccountId(long bankAccountId) {
-		this.bankAccountId = bankAccountId;
-	}
+	private String accountStatus;
 	public String getBankName() {
 		return bankName;
 	}
@@ -51,6 +45,12 @@ public class UserAddBankModel {
 	}
 	public void setBankBranch(String bankBranch) {
 		this.bankBranch = bankBranch;
+	}
+	public String getAccountStatus() {
+		return accountStatus;
+	}
+	public void setAccountStatus(String accountStatus) {
+		this.accountStatus = accountStatus;
 	}  
 	
 }

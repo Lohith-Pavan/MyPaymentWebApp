@@ -34,6 +34,6 @@ public class UserRegistrationController {
     	entity.setUserName(userRegModel.getUserName());
     	entity.setPassword(userRegModel.getPassword());
     	userService.saveUser(entity);
-    	return "login";
+    	return "redirect:/login";
     }
 }

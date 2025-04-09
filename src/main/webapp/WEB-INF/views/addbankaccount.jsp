@@ -67,8 +67,8 @@
                 <input type="text" class="form-control" id="ifscCode" name="userAddBankModel.ifscCode" required>
             </div>
             <div class="mb-3">
-                <label for="balance" class="form-label">Current Balance:</label>
-                <input type="number" class="form-control" id="balance" name="userAddBankModel.balance" required>
+                <label for="currentBalance" class="form-label">Current Balance:</label>
+                <input type="number" class="form-control" id="currentBalance" name="userAddBankModel.currentBalance" required>
             </div>
             <div class="mb-3">
                 <label for="pin" class="form-label">PIN:</label>
@@ -77,6 +77,14 @@
             <div class="mb-3">
                 <label for="bankBranch" class="form-label">Branch:</label>
                 <input type="text" class="form-control" id="bankBranch" name="userAddBankModel.bankBranch" required>
+            </div>
+            <div class="mb-3">
+    			<label for="accountStatus" class="form-label">Account Status:</label>
+    			<select class="form-control" id="accountStatus" name="userAddBankModel.accountStatus" required>
+        			<option value="Active">Active</option>
+        			<option value="Frozen">Frozen</option>
+        			<option value="Blocked">Blocked</option>
+    			</select>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-custom">Add Account</button>

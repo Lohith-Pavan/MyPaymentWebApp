@@ -1,6 +1,7 @@
 package com.lohith.mypaymentwebapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,10 @@ public class BankService {
 //	public List<UserAccountDetailsEntity> getAllUserAccountDetails(){
 //		return userAccountDetailsRepository.findAll();
 //	}
-	public BankAccountsEntity saveUser(BankAccountsEntity user) {
-		return bankAccRepo.save(user);
+//	public BankAccountsEntity saveUser(BankAccountsEntity user) {
+//		return bankAccRepo.save(user);
+//	}
+	public Optional<BankAccountsEntity> getUserBankById(Long userId){
+		return bankAccRepo.findById(userId);
 	}
 }
