@@ -23,7 +23,5 @@ public class BankService {
 //	public BankAccountsEntity saveUser(BankAccountsEntity user) {
 //		return bankAccRepo.save(user);
 //	}
-	public Optional<BankAccountsEntity> getUserBankById(Long userId){
-		return bankAccRepo.findById(userId);
-	}
+	
 }

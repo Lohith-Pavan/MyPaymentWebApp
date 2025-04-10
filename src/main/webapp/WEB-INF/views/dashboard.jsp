@@ -115,18 +115,15 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                <%if(banksList!=null && banksList.size()>0){ 
-                      UserViewBankModel selectedBank = banksList.get(0);
-                %>
-                    <p><strong>Bank Name:</strong> <%=(selectedBank!=null?selectedBank.getBankName():"N/A")%></p>
-                    <p><strong>Account No:</strong><%=(selectedBank!=null?selectedBank.getAccountNumber():"N/A")%></p>
-                    <p><strong>Balance:</strong> ₹<%=(selectedBank!=null?selectedBank.getCurrentBalance():"N/A")%></p>
+                    <p><strong>Bank Name:</strong> </p>
+                    <p><strong>Account No:</strong></p>
+                    <p><strong>Balance:</strong>₹ </p>
                 </div>
                 <div class="col-md-6">
-                    <p><strong>IFSC:</strong> <%=(selectedBank!=null?selectedBank.getIfscCode():"N/A")%></p>
-                    <p><strong>Branch:</strong> <%=(selectedBank!=null?selectedBank.getBankBranch():"N/A")%></p>
+                    <p><strong>IFSC:</strong></p>
+                    <p><strong>Branch:</strong></p>
                 </div>
-                <% }} %>
+                
             </div>
         </div>
     </div>
@@ -134,27 +131,20 @@
     <!-- Linked Bank Accounts -->
     <div class="row section">
         <h4>🏦 Linked Bank Accounts</h4>
+        <%if(banksList!=null && !banksList.isEmpty()){ 
+                for(UserViewBankModel selectedBank : banksList){
+        %>
         <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card p-3 text-center">
-                <p><strong>SBI</strong></p>
-                <p>Acct: 4567</p>
-                <p>Balance: ₹5,000</p>
+        
+            <div class="card p-3">
+                <p><strong>Bank Name:</strong><%=(selectedBank!=null?selectedBank.getBankName():"N/A")%></p>
+                <p><strong>Account No:</strong><%=(selectedBank!=null?selectedBank.getAccountNumber():"N/A")%></p>
+                <p><strong>Balance:</strong>₹<%=(selectedBank!=null?selectedBank.getCurrentBalance():"N/A")%></p>
+                <p><strong>IFSC:</strong><%=(selectedBank!=null?selectedBank.getIfscCode():"N/A")%></p>
+                <p><strong>Branch:</strong><%=(selectedBank!=null?selectedBank.getBankBranch():"N/A")%></p>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card p-3 text-center">
-                <p><strong>HDFC</strong></p>
-                <p>Acct: 6789</p>
-                <p>Balance: ₹10,000</p>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card p-3 text-center">
-                <p><strong>ICICI</strong></p>
-                <p>Acct: 9876</p>
-                <p>Balance: ₹15,000</p>
-            </div>
-        </div>
+            <% }}} %>
         <div class="col-md-3 col-sm-6 mb-3 d-flex align-items-center justify-content-center">
             <a href="/addbankaccount" class="btn btn-success w-100">+ Add Account</a>
         </div>

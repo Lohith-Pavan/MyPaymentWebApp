@@ -29,7 +29,6 @@ public class AddBankController {
 	}
 	@PostMapping("/addbankaccount")
 	public String addBankAccount(@ModelAttribute UserBankModel bankDetails,HttpSession session,Model model) {
-		// Get the logged-in user (assuming you store it in session)
 	    Long userId = (Long)session.getAttribute("userId"); 
 	    if(userId == null) {
 	    	return "redirect:/login";

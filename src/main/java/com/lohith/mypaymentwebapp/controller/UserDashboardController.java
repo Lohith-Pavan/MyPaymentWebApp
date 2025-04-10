@@ -33,10 +33,8 @@ public class UserDashboardController {
 			return "redirect:/login";
 		}
 		Optional<UserEntity> user = userService.getUserById(userId);
-		Optional<BankAccountsEntity> userBank = bankService.getUserBankById(userId);
 		if (user.isPresent()) {
 			UserEntity existedUser = user.get();
-			BankAccountsEntity existedUserBank = userBank.orElse(null);
 			UserDashboardModel userDashboardModel = new UserDashboardModel();
 			UserProfileModel userProfileModel = new UserProfileModel();
 			userProfileModel.setFirstName(existedUser.getFirstName());
@@ -46,26 +44,22 @@ public class UserDashboardController {
 			userProfileModel.setAddress(existedUser.getAddress());
 			userDashboardModel.setUserProfileModel(userProfileModel);
 
-			List<UserViewBankModel> banksList = new ArrayList<>();
-			if (existedUserBank != null) {
-				UserViewBankModel bank1 = new UserViewBankModel();
-				bank1.setBankName(existedUserBank.getBankName());
-				bank1.setAccountNumber(existedUserBank.getAccountNumber());
-				bank1.setIfscCode(existedUserBank.getIfscCode());
-				bank1.setCurrentBalance(existedUserBank.getCurrentBalance());
-				bank1.setBankBranch(existedUserBank.getBankBranch());
-				banksList.add(bank1);
-			}
-			userDashboardModel.setUserBanksListModel(banksList);
+			List<BankAccountsEntity> userBank = existedUser.getBankAccounts();
+			if (userBank != null && !userBank.isEmpty()) {
+				List<UserViewBankModel> banks = new ArrayList<>();
+				for (BankAccountsEntity existedUserBank : userBank) {
+					UserViewBankModel bank = new UserViewBankModel();
+					bank.setBankName(existedUserBank.getBankName());
+					bank.setAccountNumber(existedUserBank.getAccountNumber());
+					bank.setIfscCode(existedUserBank.getIfscCode());
+					bank.setCurrentBalance(existedUserBank.getCurrentBalance());
+					bank.setBankBranch(existedUserBank.getBankBranch());
+					banks.add(bank);
+				}
 
+				userDashboardModel.setUserBanksListModel(banks);
+			}
 			model.addAttribute("userDashboardModel", userDashboardModel);
-//		UserProfileModel userProfile = new UserProfileModel();
-//		userProfile.setFirstName(existedUser.getFirstName());
-//		userProfile.setLastName(existedUser.getLastName());
-//		userProfile.setPhoneNumber(existedUser.getPhoneNumber());
-//		userProfile.setEmail(existedUser.getEmail());
-//		userProfile.setAddress(existedUser.getAddress());
-//		model.addAttribute("userProfile", userProfile);
 		}
 		return "dashboard";
 	}
