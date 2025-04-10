@@ -71,6 +71,6 @@ public class UserAccountDetailsEntity {
 	public String toString() {
 		return "UserAccountDetailsEntity [userAccountId=" + userAccountId + ", accountOpenDate=" + accountOpenDate
 				+ ", currentWalletBalance=" + currentWalletBalance + ", linkedBankAccountsCount="
-				+ linkedBankAccountsCount + ", walletPin=" + walletPin + ", user=" + user + "]";
+				+ linkedBankAccountsCount + ", walletPin=" + walletPin + "]";
 	}
 }

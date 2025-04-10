@@ -82,9 +82,11 @@
 			<div class="col-12 mt-2">
 			<% 
         UserDashboardModel userDashboardModel = (UserDashboardModel)request.getAttribute("userDashboardModel");
+			UserProfileModel userProfile = null;
+			List<UserViewBankModel> banksList = null;
 		if(userDashboardModel!=null){
-			UserProfileModel userProfile = userDashboardModel.getUserProfileModel();
-			List<UserViewBankModel> banksList = userDashboardModel.getUserBanksListModel();
+			userProfile = userDashboardModel.getUserProfileModel();
+			banksList = userDashboardModel.getUserBanksListModel();
         %>
 				<p>
 					<strong>First Name:</strong>

@@ -89,7 +89,7 @@ public class TransactionEntity {
 		public String toString() {
 			return "TransactionEntity [txnId=" + txnId + ", txnDateTime=" + txnDateTime + ", sourceId=" + sourceId
 					+ ", targetId=" + targetId + ", sourceTypeCode=" + sourceTypeCode + ", destTypeCode=" + destTypeCode
-					+ ", txnAmount=" + txnAmount + ", user=" + user + "]";
+					+ ", txnAmount=" + txnAmount + "]";
 		}
 		
 }
