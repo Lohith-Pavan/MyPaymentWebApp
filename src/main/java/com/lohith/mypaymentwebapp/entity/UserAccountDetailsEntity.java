@@ -19,7 +19,7 @@ import lombok.ToString;
 public class UserAccountDetailsEntity {
 	@Id
 	@Column(name = "user_account_id")
-	private long userAccountId;
+	private Long userAccountId;
 	@Column(name = "account_open_date")
 	private LocalDate accountOpenDate;
 	@Column(name = "current_wallet_balance")
@@ -31,10 +31,10 @@ public class UserAccountDetailsEntity {
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private UserEntity user;
-	public long getUserAccountId() {
+	public Long getUserAccountId() {
 		return userAccountId;
 	}
-	public void setUserAccountId(long userAccountId) {
+	public void setUserAccountId(Long userAccountId) {
 		this.userAccountId = userAccountId;
 	}
 	public LocalDate getAccountOpenDate() {

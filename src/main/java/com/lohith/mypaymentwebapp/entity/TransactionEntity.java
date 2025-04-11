@@ -21,7 +21,7 @@ import lombok.ToString;
 public class TransactionEntity {
 		@Id
 		@Column(name="txn_id")
-		private long txnId;
+		private Long txnId;
 		@Column(name="txn_date_time")
 		private LocalDateTime txnDateTime;
 		@Column(name="source_id")
@@ -37,10 +37,10 @@ public class TransactionEntity {
 		@ManyToOne
 		@JoinColumn(name = "user_id")
 		private UserEntity user;
-		public long getTxnId() {
+		public Long getTxnId() {
 			return txnId;
 		}
-		public void setTxnId(long txnId) {
+		public void setTxnId(Long txnId) {
 			this.txnId = txnId;
 		}
 		public LocalDateTime getTxnDateTime() {

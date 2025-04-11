@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 
 public class UserAddBankModel {
 	private String bankName;   
-	private long AccountNumber;
+	private Long accountNumber;
 	private String ifscCode;
 	private double currentBalance;
 	private int pin;
@@ -16,11 +16,11 @@ public class UserAddBankModel {
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
 	}
-	public long getAccountNumber() {
-		return AccountNumber;
+	public Long getAccountNumber() {
+		return accountNumber;
 	}
-	public void setAccountNumber(long accountNumber) {
-		AccountNumber = accountNumber;
+	public void setAccountNumber(Long accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 	public String getIfscCode() {
 		return ifscCode;
@@ -51,6 +51,12 @@ public class UserAddBankModel {
 	}
 	public void setAccountStatus(String accountStatus) {
 		this.accountStatus = accountStatus;
+	}
+	@Override
+	public String toString() {
+		return "UserAddBankModel [bankName=" + bankName + ", accountNumber=" + accountNumber + ", ifscCode=" + ifscCode
+				+ ", currentBalance=" + currentBalance + ", pin=" + pin + ", bankBranch=" + bankBranch
+				+ ", accountStatus=" + accountStatus + "]";
 	}  
 	
 }

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ page import="java.util.List" %>
+<%@ page import="com.lohith.mypaymentwebapp.model.UserViewBankModel" %>
+<% List<UserViewBankModel> banksList = (List<UserViewBankModel>)request.getAttribute("userBanksList"); 
+   if(banksList!=null && !banksList.isEmpty()){
+%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -70,7 +75,7 @@
 <div class="container">
     <div class="form-heading">SEND MONEY</div>
     <div class="form-box">
-        <form action="sendMoney" method="post">
+        <form action="/sendmoney" method="post">
             <div class="mb-3">
                 <label for="amount">Amount to Send:</label>
                 <input type="number" class="form-control" id="amount" name="amount" required>
@@ -80,15 +85,16 @@
                 <label for="/sendmoney">From:</label>
                 <select class="form-control" id="fromAccount" name="fromAccount" required>
                     <option value="">Select Account</option>
-                    <option value="1234">Bank A - 1234</option>
-                    <option value="5678">Bank B - 5678</option>
+                    <% for(UserViewBankModel existedUserBank : banksList){%>
+                    <option value="<%=existedUserBank.getAccountNumber() %>"><%=existedUserBank.getBankName() %> - <%=existedUserBank.getAccountNumber() %></option>
+                    <% }} %>
                     <!-- Dynamically populate this with user bank accounts -->
                 </select>
             </div>
 
             <div class="mb-3">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="transferType" id="toAccount" value="account" checked>
+                    <input class="form-check-input" type="radio" name="transferType" id="toAccount" value="BA" checked>
                     <label class="form-check-label" for="toAccount">
                         To Account Number
                     </label>
@@ -96,7 +102,7 @@
                 <input type="text" class="form-control mt-2" name="toAccountNumber" placeholder="Enter Account Number">
 
                 <div class="form-check mt-3">
-                    <input class="form-check-input" type="radio" name="transferType" id="toWallet" value="wallet">
+                    <input class="form-check-input" type="radio" name="transferType" id="toWallet" value="WA">
                     <label class="form-check-label" for="toWallet">
                         To Wallet
                     </label>

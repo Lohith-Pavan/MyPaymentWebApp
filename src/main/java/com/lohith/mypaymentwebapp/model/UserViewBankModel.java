@@ -2,7 +2,7 @@ package com.lohith.mypaymentwebapp.model;
 
 public class UserViewBankModel {
 	private String bankName;   
-	private long accountNumber;
+	private Long accountNumber;
 	private String ifscCode;
 	private double currentBalance;
 	private String bankBranch;
@@ -12,10 +12,10 @@ public class UserViewBankModel {
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
 	}
-	public long getAccountNumber() {
+	public Long getAccountNumber() {
 		return accountNumber;
 	}
-	public void setAccountNumber(long accountNumber) {
+	public void setAccountNumber(Long accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 	public String getIfscCode() {

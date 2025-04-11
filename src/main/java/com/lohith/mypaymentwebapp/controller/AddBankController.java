@@ -48,6 +48,7 @@ public class AddBankController {
 	    	bankEntity.setUser(existingUser);
 	    	existingUser.getBankAccounts().add(bankEntity);
 	    	userService.saveUser(existingUser);
+	        System.out.println(existingUser);
 	    }
 	   	return "redirect:/dashboard";
 	}

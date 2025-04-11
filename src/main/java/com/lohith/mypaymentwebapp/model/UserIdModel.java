@@ -1,13 +1,13 @@
 package com.lohith.mypaymentwebapp.model;
 
 public class UserIdModel {
-	private long userId;
+	private Long userId;
 
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 		

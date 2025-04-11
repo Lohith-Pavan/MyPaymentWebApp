@@ -20,11 +20,11 @@ public class BankAccountsEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="bank_account_id")
-    private long bankAccountId;
+    private Long bankAccountId;
 	@Column(name="bank_name")
 	private String bankName;
 	@Column(name="account_number")
-	private long AccountNumber;
+	private Long accountNumber;
     @Column(name="ifsc_code")
 	private String ifscCode;
     @Column(name="current_balance")
@@ -38,10 +38,10 @@ public class BankAccountsEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
-	public long getBankAccountId() {
+	public Long getBankAccountId() {
 		return bankAccountId;
 	}
-	public void setBankAccountId(long bankAccountId) {
+	public void setBankAccountId(Long bankAccountId) {
 		this.bankAccountId = bankAccountId;
 	}
 	public String getBankName() {
@@ -50,11 +50,11 @@ public class BankAccountsEntity {
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
 	}
-	public long getAccountNumber() {
-		return AccountNumber;
+	public Long getAccountNumber() {
+		return accountNumber;
 	}
-	public void setAccountNumber(long accountNumber) {
-		AccountNumber = accountNumber;
+	public void setAccountNumber(Long accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 	public String getIfscCode() {
 		return ifscCode;
@@ -95,7 +95,7 @@ public class BankAccountsEntity {
 	@Override
 	public String toString() {
 		return "BankAccountsEntity [bankAccountId=" + bankAccountId + ", bankName=" + bankName + ", AccountNumber="
-				+ AccountNumber + ", ifscCode=" + ifscCode + ", currentBalance=" + currentBalance + ", pin=" + pin
+				+ accountNumber + ", ifscCode=" + ifscCode + ", currentBalance=" + currentBalance + ", pin=" + pin
 				+ ", bankBranch=" + bankBranch + ", accountStatus=" + accountStatus + "]";
 	}
 	
