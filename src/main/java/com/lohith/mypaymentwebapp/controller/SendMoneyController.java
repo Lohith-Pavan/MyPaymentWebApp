@@ -60,6 +60,7 @@ public class SendMoneyController {
 		}
 		boolean transaction = transactionService.getUpdate(userSendMoneyDto, userId);
 		if (transaction) {
+			transactionService.recordTransactions(userSendMoneyDto, userId);
 			return "redirect:/dashboard";
 		} else {
 			return "redirect:/sendmoney";

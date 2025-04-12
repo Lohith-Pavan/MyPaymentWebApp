@@ -2,6 +2,7 @@
 <%@ page import="com.lohith.mypaymentwebapp.model.UserDashboardModel" %>
 <%@ page import="com.lohith.mypaymentwebapp.model.UserViewBankModel" %>
 <%@ page import="com.lohith.mypaymentwebapp.model.UserProfileModel" %>
+<%@ page import="com.lohith.mypaymentwebapp.model.UserViewTransactionsModel" %>
 <%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
@@ -84,9 +85,11 @@
         UserDashboardModel userDashboardModel = (UserDashboardModel)request.getAttribute("userDashboardModel");
 			UserProfileModel userProfile = null;
 			List<UserViewBankModel> banksList = null;
+			List<UserViewTransactionsModel> txnsList = null;
 		if(userDashboardModel!=null){
 			userProfile = userDashboardModel.getUserProfileModel();
 			banksList = userDashboardModel.getUserBanksListModel();
+			txnsList = userDashboardModel.getUserTxnListModel();
         %>
 				<p>
 					<strong>First Name:</strong>
@@ -144,26 +147,50 @@
                 <p><strong>Branch:</strong><%=(selectedBank!=null?selectedBank.getBankBranch():"N/A")%></p>
             </div>
         </div>
-            <% }}} %>
+            <% }} %>
         <div class="col-md-3 col-sm-6 mb-3 d-flex align-items-center justify-content-center">
             <a href="/addbankaccount" class="btn btn-success w-100">+ Add Account</a>
         </div>
     </div>
 
     <!-- Recent Transactions -->
-    <div class="row section">
-        <div class="col-12 d-flex justify-content-between align-items-center">
-            <h4>🧾 Recent Transactions</h4>
-            <a href="/detailedstatementpage" class="btn btn-outline-primary">Detailed Statement</a>
-        </div>
-        <div class="col-12 mt-3">
-            <ul class="list-group">
-                <li class="list-group-item">Paid ₹500 to Amazon - 01 Apr</li>
-                <li class="list-group-item">Received ₹1200 from Rahul - 30 Mar</li>
-                <li class="list-group-item">Paid ₹300 to Flipkart - 28 Mar</li>
-            </ul>
-        </div>
+   <div class="row section">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <h4>🧾 Recent Transactions</h4>
+        <a href="/detailedstatementpage" class="btn btn-outline-primary">Detailed Statement</a>
     </div>
+    <div class="col-12 mt-3">
+        <table class="table table-striped table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th>Transaction Id</th>
+                    <th>Date & Time</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Source Type</th>
+                    <th>Destination Type</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <% if(txnsList!=null && !txnsList.isEmpty()){
+            	for(UserViewTransactionsModel txns : txnsList){
+            %>
+            <tbody>
+                <tr>
+                    <td><%=(txns!=null?txns.getTxnId():"N/A")%></td>
+                    <td><%=(txns!=null?txns.getDate():"N/A")%></td>
+                    <td><%=(txns!=null?txns.getSender():"N/A")%></td>
+                    <td><%=(txns!=null?txns.getReceiver():"N/A")%></td>
+                    <td><%=(txns!=null?txns.getSourceType():"N/A")%></td>
+                    <td><%=(txns!=null?txns.getDestType():"N/A")%></td>
+                    <td class="text-danger">₹<%=(txns!=null?txns.getAmount():"N/A")%></td>
+                </tr>
+            </tbody>
+            <% }}} %>
+        </table>
+    </div>
+</div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -6,6 +6,7 @@ import java.util.List;
 public class UserDashboardModel {
       private UserProfileModel userProfileModel;
       private List<UserViewBankModel> userBanksListModel;
+      private List<UserViewTransactionsModel> userTxnListModel;
 	public UserProfileModel getUserProfileModel() {
 		return userProfileModel;
 	}
@@ -18,5 +19,10 @@ public class UserDashboardModel {
 	public void setUserBanksListModel(List<UserViewBankModel> userBanksListModel) {
 		this.userBanksListModel = userBanksListModel;
 	}
-	
+	public List<UserViewTransactionsModel> getUserTxnListModel() {
+		return userTxnListModel;
+	}
+	public void setUserTxnListModel(List<UserViewTransactionsModel> userTxnListModel) {
+		this.userTxnListModel = userTxnListModel;
+	}
 }

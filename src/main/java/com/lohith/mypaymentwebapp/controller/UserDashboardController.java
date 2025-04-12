@@ -10,10 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.lohith.mypaymentwebapp.entity.BankAccountsEntity;
+import com.lohith.mypaymentwebapp.entity.TransactionEntity;
 import com.lohith.mypaymentwebapp.entity.UserEntity;
 import com.lohith.mypaymentwebapp.model.UserDashboardModel;
 import com.lohith.mypaymentwebapp.model.UserProfileModel;
 import com.lohith.mypaymentwebapp.model.UserViewBankModel;
+import com.lohith.mypaymentwebapp.model.UserViewTransactionsModel;
 import com.lohith.mypaymentwebapp.service.BankService;
 import com.lohith.mypaymentwebapp.service.UserService;
 
@@ -56,8 +58,24 @@ public class UserDashboardController {
 					bank.setBankBranch(existedUserBank.getBankBranch());
 					banks.add(bank);
 				}
-
 				userDashboardModel.setUserBanksListModel(banks);
+			}
+			List<TransactionEntity> txnsList = existedUser.getTransactions();
+			if(txnsList!=null && !txnsList.isEmpty()) {
+				List<UserViewTransactionsModel> txns = new ArrayList<>();
+				for(TransactionEntity existedUserTxns : txnsList) {
+					UserViewTransactionsModel txn = new UserViewTransactionsModel();
+					txn.setTxnId(existedUserTxns.getTxnId());
+					txn.setDate(existedUserTxns.getTxnDateTime());
+					txn.setSender(existedUserTxns.getUser().getFirstName());
+					UserEntity receiver = bankService.getBankByAccountNumber(existedUserTxns.getTargetId()).get().getUser();
+					txn.setReceiver(receiver.getFirstName());
+					txn.setSourceType(existedUserTxns.getSourceType().getSourceTypeCode());
+					txn.setDestType(existedUserTxns.getDestType().getSourceTypeCode());
+					txn.setAmount(existedUserTxns.getTxnAmount());
+					txns.add(txn);
+				}
+				userDashboardModel.setUserTxnListModel(txns);
 			}
 			model.addAttribute("userDashboardModel", userDashboardModel);
 		}

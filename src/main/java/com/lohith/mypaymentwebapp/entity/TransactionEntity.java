@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -20,22 +22,25 @@ import lombok.ToString;
 @Table(name="txn_details")
 public class TransactionEntity {
 		@Id
+		@GeneratedValue(strategy=GenerationType.IDENTITY)
 		@Column(name="txn_id")
 		private Long txnId;
 		@Column(name="txn_date_time")
 		private LocalDateTime txnDateTime;
 		@Column(name="source_id")
-		private int sourceId;
-		@Column(name="target_id")
-		private int targetId;
-		@Column(name="source_type_code")
-		private String sourceTypeCode;
-		@Column(name="dest_type_code")
-		private String destTypeCode;
+		private Long sourceId;
+		@Column(name="target__id")
+		private Long targetId;
+		@ManyToOne
+		@JoinColumn(name="source_type_id",referencedColumnName="source_id")
+		private SourceTypeEntity sourceType;
+		@ManyToOne
+		@JoinColumn(name="destination_type_id",referencedColumnName="source_id")
+		private SourceTypeEntity destType;
 		@Column(name="txn_amount")
 		private double txnAmount;
 		@ManyToOne
-		@JoinColumn(name = "user_id")
+		@JoinColumn(name="user_id")
 		private UserEntity user;
 		public Long getTxnId() {
 			return txnId;
@@ -49,29 +54,29 @@ public class TransactionEntity {
 		public void setTxnDateTime(LocalDateTime txnDateTime) {
 			this.txnDateTime = txnDateTime;
 		}
-		public int getSourceId() {
+		public Long getSourceId() {
 			return sourceId;
 		}
-		public void setSourceId(int sourceId) {
+		public void setSourceId(Long sourceId) {
 			this.sourceId = sourceId;
 		}
-		public int getTargetId() {
+		public Long getTargetId() {
 			return targetId;
 		}
-		public void setTargetId(int targetId) {
+		public void setTargetId(Long targetId) {
 			this.targetId = targetId;
 		}
-		public String getSourceTypeCode() {
-			return sourceTypeCode;
+		public SourceTypeEntity getSourceType() {
+			return sourceType;
 		}
-		public void setSourceTypeCode(String sourceTypeCode) {
-			this.sourceTypeCode = sourceTypeCode;
+		public void setSourceType(SourceTypeEntity sourceType) {
+			this.sourceType = sourceType;
 		}
-		public String getDestTypeCode() {
-			return destTypeCode;
+		public SourceTypeEntity getDestType() {
+			return destType;
 		}
-		public void setDestTypeCode(String destTypeCode) {
-			this.destTypeCode = destTypeCode;
+		public void setDestType(SourceTypeEntity destType) {
+			this.destType = destType;
 		}
 		public double getTxnAmount() {
 			return txnAmount;
@@ -88,8 +93,7 @@ public class TransactionEntity {
 		@Override
 		public String toString() {
 			return "TransactionEntity [txnId=" + txnId + ", txnDateTime=" + txnDateTime + ", sourceId=" + sourceId
-					+ ", targetId=" + targetId + ", sourceTypeCode=" + sourceTypeCode + ", destTypeCode=" + destTypeCode
+					+ ", targetId=" + targetId + ", sourceType=" + sourceType + ", destType=" + destType
 					+ ", txnAmount=" + txnAmount + "]";
 		}
-		
 }
